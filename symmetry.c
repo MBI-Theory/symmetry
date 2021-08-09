@@ -17,7 +17,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- * $Log: symmetry.c,v $
+ * Last commit: $Id: $
+ * 2021/08/09 - git conversion
  * Revision 1.16  2003/04/04  13:05:03  patchkov
  * Revision 1.15  2000/01/25  16:47:17  patchkov
  * Revision 1.14  2000/01/25  16:39:08  patchkov

@@ -1,0 +1,2 @@
+# Adapted from https://github.com/turon/git-rcs-keywords/blob/master/.gitattributes
+*.c filter=keywords

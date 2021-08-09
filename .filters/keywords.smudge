@@ -1,0 +1,15 @@
+#!/bin/bash
+# Inspired by: https://github.com/turon/git-rcs-keywords/blob/master/.git_filters/rcs-keywords.smudge
+filename="${1-"."}"
+basename="$(basename "$filename")"
+# Read the last commit from the log
+author="$(git log -- "$filename" | awk '(NR<=3)&&/^Author: /{print substr($0,8)}')"
+date="$(git log -- "$filename" | awk '(NR<=3)&&/^Date: /{print substr($0,8)}')"
+ident="$(git log -- "$filename" | awk '(NR<=3)&&/^commit /{print $2}')"
+#
+sed \
+-e 's/\$Date[^\$]*\$/\$Date: '"$date"' \$/g' \
+-e 's/\$Author[^\$]*\$/\$Author: '"$author"' \$/g' \
+-e 's/\$Revision[^\$]*\$/\$Revision: '"$ident"' \$/g' \
+-e 's/\$Id[^\$]*\$/\$Id: '"$basename $date $author"' \$/g' \
+-
