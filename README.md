@@ -62,7 +62,7 @@ Line 3: ...
 Examples of the input format can be found in the tests/ subdirectory. If no input
 file is specified, the structure will be read from the standard input.
  
-<p> 
+<p> <p>
 Prior to January 25, 2000 (v. 1.15 of the original RCS repositiory), the code contained 
 a bug in the logic used to recognize odd-order improper axes. The bug was found by 
 Dr. Thomas Sommerfeld (University if Heidelberg), who is gratefully acknowledged.
