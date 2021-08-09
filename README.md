@@ -31,7 +31,7 @@ making sure to include the complete input for inclusion in the test set.
 <p>
 To compile the code and run the test test, type "make" in the top-level directory. The are 
 no pre-requisites or dependencies beyond a working C compiler and basic Unix utilities (make,
-grep, awk).
+grep, awk, sed, basename).
   
 <p>
 The following options are recognised by the code (default values in parentheses):
