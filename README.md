@@ -34,29 +34,34 @@ no pre-requisites or dependencies beyond a working C compiler and basic Unix uti
 grep, awk).
   
 <p>
-The following options are recognised by the code:
+The following options are recognised by the code (default values in parentheses):
 <pre>
-  <tr>  -verbose      (  0) Determines verbosity level </tr>
-  <tr>                      All values above 0 are intended for debugging purposes</tr>
-  <tr>  -maxaxisorder ( 20) Maximum order of rotation axis to look for </tr>
-  <tr>  -maxoptcycles (200) Maximum allowed number of cycles in symmetry element optimization </tr>
-  <tr>  --                  Terminates option processing </tr>
-<tr>  -same         (   0.001) Atoms are colliding if distance falls below this value
-<tr>  -primary      (    0.05) Initial loose criterion for atom equivalence
-<tr>  -final        (  0.0001) Final criterion for atom equivalence
-<tr>  -maxoptstep   (     0.5) Largest step allowed in symmetry element optimization
-<tr>  -minoptstep   (   1e-07) Termination criterion in symmetry element optimization
-<tr>  -gradstep     (   1e-07) Finite step used in numeric gradient evaluation
-<tr>  -minchange    (   1e-10) Minimum allowed change in target function
-<tr>  -minchgcycles (       5)  Number of minchange cycles before optimization stops
+  -verbose      (    0) Determines verbosity level
+                        All values above 0 are intended for debugging purposes
+  -maxaxisorder (   20) Maximum order of rotation axis to look for
+  -maxoptcycles (  200) Maximum allowed number of cycles in symmetry element optimization 
+  --                    Terminates option processing 
+  -same         ( 1e-3) Atoms are colliding if distance falls below this value
+  -primary      ( 0.05) Initial loose criterion for atom equivalence
+  -final        ( 1e-4) Final criterion for atom equivalence
+  -maxoptstep   (  0.5) Largest step allowed in symmetry element optimization
+  -minoptstep   ( 1e-7) Termination criterion in symmetry element optimization
+  -gradstep     ( 1e-7) Finite step used in numeric gradient evaluation
+  -minchange    (1e-10) Minimum allowed change in target function
+  -minchgcycles (    5) Number of minchange cycles before optimization stops
 </pre>
 
-  Input is expected in the following format:
-number_of_atoms
-AtomicNumber X Y Z
-...
-
-  
+<p>
+In addition to the options, at most one file can be specified on the command line.
+The file is expected to contain structure input in the following format:
+<pre>
+Line 1: number-of-atoms
+Line 2: atomic-number X Y Z
+Line 3: ...
+</pre>
+Examples of the input format can be found in the tests/ subdirectory. If no input
+file is specified, the structure will be read from the standard input.
+ 
 <p> 
 Prior to January 25, 2000 (v. 1.15 of the original RCS repositiory), the code contained 
 a bug in the logic used to recognize odd-order improper axes. The bug was found by 
