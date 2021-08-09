@@ -1,4 +1,0 @@
-# Adapted from https://github.com/turon/git-rcs-keywords/blob/master/.gitconfig
-[filter "keywords"]
-	clean  = .filters/keywords.clean
-	smudge = .filters/keywords.smudge %f
