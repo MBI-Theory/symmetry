@@ -17,7 +17,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- * Last commit: $Id: $
+ * Last commit: $Id$
  * 2021/08/09 - git conversion
  * Revision 1.16  2003/04/04  13:05:03  patchkov
  * Revision 1.15  2000/01/25  16:47:17  patchkov
@@ -1760,7 +1760,7 @@ for( argc--, argv++ ; argc > 0 ; argc -= 2, argv += 2 ){
                 "...\n" ) ;
         printf( "\n"
                 "Note that only primitive rotations will be reported\n" ) ;
-        printf( "This is version $Revision: 1.16 $ ($Date: 2003/04/04 13:05:03 $)\n" ) ;
+        printf( "This is version $Revision$ ($Date$)\n" ) ;
         exit( EXIT_SUCCESS ) ;
         }
     else
