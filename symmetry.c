@@ -1760,6 +1760,7 @@ for( argc--, argv++ ; argc > 0 ; argc -= 2, argv += 2 ){
                 "...\n" ) ;
         printf( "\n"
                 "Note that only primitive rotations will be reported\n" ) ;
+        printf( "The source code at: https://github.com/MBI-Theory/symmetry/\n" ) ;
         printf( "This is version $Revision$ ($Date$)\n" ) ;
         exit( EXIT_SUCCESS ) ;
         }
