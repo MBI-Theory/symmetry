@@ -28,6 +28,35 @@ able to name them. In the latter case, please open the issue at
 <a href="https://github.com/MBI-Theory/symmetry">https://github.com/MBI-Theory/symmetry</a>,
 making sure to include the complete input for inclusion in the test set.
   
+<p>
+To compile the code and run the test test, type "make" in the top-level directory. The are 
+no pre-requisites or dependencies beyond a working C compiler and basic Unix utilities (make,
+grep, awk).
+  
+<p>
+The following options are recognised by the code:
+<pre>
+  <tr>  -verbose      (  0) Determines verbosity level </tr>
+  <tr>                      All values above 0 are intended for debugging purposes</tr>
+  <tr>  -maxaxisorder ( 20) Maximum order of rotation axis to look for </tr>
+  <tr>  -maxoptcycles (200) Maximum allowed number of cycles in symmetry element optimization </tr>
+  <tr>  --                  Terminates option processing </tr>
+<tr>  -same         (   0.001) Atoms are colliding if distance falls below this value
+<tr>  -primary      (    0.05) Initial loose criterion for atom equivalence
+<tr>  -final        (  0.0001) Final criterion for atom equivalence
+<tr>  -maxoptstep   (     0.5) Largest step allowed in symmetry element optimization
+<tr>  -minoptstep   (   1e-07) Termination criterion in symmetry element optimization
+<tr>  -gradstep     (   1e-07) Finite step used in numeric gradient evaluation
+<tr>  -minchange    (   1e-10) Minimum allowed change in target function
+<tr>  -minchgcycles (       5)  Number of minchange cycles before optimization stops
+</pre>
+
+  Input is expected in the following format:
+number_of_atoms
+AtomicNumber X Y Z
+...
+
+  
 <p> 
 Prior to January 25, 2000 (v. 1.15 of the original RCS repositiory), the code contained 
 a bug in the logic used to recognize odd-order improper axes. The bug was found by 
