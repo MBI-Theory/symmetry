@@ -1,6 +1,6 @@
-CFLAGS := -O
-CPPFLAGS :=
-LDLIBS := -lm
+CFLAGS ?= -O
+CPPFLAGS ?=
+LDLIBS ?= -lm
 
 .PHONY: target
 target: symmetry.x check
