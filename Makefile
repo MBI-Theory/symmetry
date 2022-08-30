@@ -1,10 +1,17 @@
+CFLAGS := -O
+CPPFLAGS :=
+LDLIBS := -lm
+
+.PHONY: target
 target: symmetry.x check
 
-symmetry.x: symmetry.c
-	$(CC) -o symmetry.x -O symmetry.c -lm
+%.x: %.c
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LDLIBS)
 
+.PHONY: check
 check: symmetry.x
 	cd tests ; ./check
 
+.PHONY: clean
 clean:
-	rm symmetry.x
+	rm -f symmetry.x
