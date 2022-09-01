@@ -1,4 +1,4 @@
-CFLAGS ?= -O
+CFLAGS ?= -O -Wall -Werror
 CPPFLAGS ?=
 LDLIBS ?= -lm
 

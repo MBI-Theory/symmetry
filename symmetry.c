@@ -463,11 +463,9 @@ do {
         break ;
         }
     if( cycle > 0 ){
-        if( fabs( f-fold ) > OptChangeThreshold ) {
+        if( fabs( f-fold ) > OptChangeThreshold )
              hits = 0 ;
-        } else {
-             hits++ ;
-        }
+        else hits++ ;
         if( hits >= OptChangeHits ){
             if( verbose > 1 ) printf( "        no progress is made, stop optimization\n" ) ;
             break ;
@@ -533,7 +531,7 @@ do {
                     for( i = 0 ; i < vars ; i++ )
                         values[i] += x*step[i] ;
                     }
-                else { b = 0 ; }
+                else b = 0 ;
                 }
             if( b <= 0 ){
                 if( fnew2 < fnew ){
@@ -553,7 +551,7 @@ if( cycle >= MaxOptCycles ) BadOptimization = 1 ;
 if( verbose > 0 ) {
     if( cycle >= MaxOptCycles ) {
         printf( "        maximum number of optimization cycles made\n" ) ;
-    }
+        }
         printf( "        optimization completed after %d cycles with f = %g\n", cycle, f ) ;
     }
 }
@@ -854,9 +852,11 @@ for( i = 0 ; i < AtomsCount ; i++ ){
     if( s >= 0 ) {
          for( k = 0 ; k < DIMENSION ; k++ )
              dir[k] += rel[k] ;
-    } else { for( k = 0 ; k < DIMENSION ; k++ )
+         } 
+    else { 
+         for( k = 0 ; k < DIMENSION ; k++ )
              dir[k] -= rel[k] ;
-        }
+         }
     }
 for( k = 0, s = 0 ; k < DIMENSION ; k++ )
     s += pow2( dir[k] ) ;
@@ -864,7 +864,8 @@ s = sqrt(s) ;
 if( s > 0 ) {
      for( k = 0 ; k < DIMENSION ; k++ )
          dir[k] /= s ;
-} else { dir[0] = 1 ; }
+     } 
+else dir[0] = 1 ;
 for( k = 0 ; k < DIMENSION ; k++ )
     axis->direction[k] = dir[k] ;
 for( k = 0, s = 0 ; k < DIMENSION ; k++ )
@@ -873,7 +874,8 @@ s = sqrt(s) ;
 if( s > 0 ) {
     for( k = 0 ; k < DIMENSION ; k++ )
         axis->normal[k] = CenterOfSomething[k]/s ;
-} else {
+    } 
+else {
     for( k = 1 ; k < DIMENSION ; k++ )
         axis->normal[k] = 0 ;
     axis->normal[0] = 1 ;
@@ -1054,13 +1056,19 @@ sign = 0 ;
 if( axis->direction[0] <= 0 ) {
     if( axis->direction[0] < 0 ) {
          sign = 1 ;
-    } else if( axis->direction[1] <= 0 ) {
+         } 
+    else { /* axis->direction[0]==0 */
+         if( axis->direction[1] <= 0 ) {
              if( axis->direction[1] < 0 ) {
                   sign = 1 ;
-             } else if( axis->direction[2] < 0 ) {
+                  } 
+             else { /* axis->direction[0]==0 && axis->direction[1]==0 */
+                if( axis->direction[2] < 0 ) {
                       sign = 1 ;
                       }
+                 }
              }
+        }
     }
 if( sign ) {
     for( i = 0 ; i < DIMENSION ; i++ )
@@ -1436,10 +1444,11 @@ report_planes( void )
 
 if( PlanesCount == 0 ) {
     printf( "There are no planes of symmetry in the molecule\n" ) ;
-} else {
-    if( PlanesCount == 1 ) {
+    } 
+else {
+    if( PlanesCount == 1 )
          printf( "There is a plane of symmetry in the molecule\n" ) ;
-    } else { printf( "There are %d planes of symmetry in the molecule\n", PlanesCount ) ; }
+    else printf( "There are %d planes of symmetry in the molecule\n", PlanesCount ) ;
     printf( "     Residual          Direction of the normal           Distance\n" ) ;
     for( i = 0 ; i < PlanesCount ; i++ ){
         printf( "%3d %8.4e ", i, Planes[i]->maxdev ) ;
@@ -1453,8 +1462,9 @@ void
 report_inversion_centers( void )
 {
 if( InversionCentersCount == 0 ) {
-     printf( "There is no inversion center in the molecule\n" ) ;
-} else {
+    printf( "There is no inversion center in the molecule\n" ) ;
+    } 
+else {
     printf( "There in an inversion center in the molecule\n" ) ;
     printf( "     Residual                      Position\n" ) ;
     printf( "   %8.4e ", InversionCenters[0]->maxdev ) ;
@@ -1472,16 +1482,17 @@ report_axes( void )
 
 if( NormalAxesCount == 0 ) {
     printf( "There are no normal axes in the molecule\n" ) ;
-} else {
-    if( NormalAxesCount == 1 ) {
+    } 
+else {
+    if( NormalAxesCount == 1 )
          printf( "There is a normal axis in the molecule\n" ) ;
-    } else { printf( "There are %d normal axes in the molecule\n", NormalAxesCount ) ; }
+    else printf( "There are %d normal axes in the molecule\n", NormalAxesCount ) ;
     printf( "     Residual  Order         Direction of the axis                         Supporting point\n" ) ;
     for( i = 0 ; i < NormalAxesCount ; i++ ){
         printf( "%3d %8.4e ", i, NormalAxes[i]->maxdev ) ;
-        if( NormalAxes[i]->order == 0 ) {
+        if( NormalAxes[i]->order == 0 )
              printf( "Inf " ) ;
-        } else { printf( "%3d ", NormalAxes[i]->order ) ; }
+        else printf( "%3d ", NormalAxes[i]->order ) ;
         printf( "(%11.8f,%11.8f,%11.8f) ", 
             NormalAxes[i]->direction[0], NormalAxes[i]->direction[1], NormalAxes[i]->direction[2] ) ;
         printf( "(%14.8f,%14.8f,%14.8f)\n", 
@@ -1499,16 +1510,17 @@ report_improper_axes( void )
 
 if( ImproperAxesCount == 0 ) {
     printf( "There are no improper axes in the molecule\n" ) ;
-} else {
-    if( ImproperAxesCount == 1 ) {
+    } 
+else {
+    if( ImproperAxesCount == 1 )
          printf( "There is an improper axis in the molecule\n" ) ;
-    } else { printf( "There are %d improper axes in the molecule\n", ImproperAxesCount ) ; }
+    else printf( "There are %d improper axes in the molecule\n", ImproperAxesCount ) ;
     printf( "     Residual  Order         Direction of the axis                         Supporting point\n" ) ;
     for( i = 0 ; i < ImproperAxesCount ; i++ ){
         printf( "%3d %8.4e ", i, ImproperAxes[i]->maxdev ) ;
-        if( ImproperAxes[i]->order == 0 ) {
+        if( ImproperAxes[i]->order == 0 )
              printf( "Inf " ) ;
-        } else { printf( "%3d ", ImproperAxes[i]->order ) ; }
+        else printf( "%3d ", ImproperAxes[i]->order ) ;
         printf( "(%11.8f,%11.8f,%11.8f) ", 
             ImproperAxes[i]->direction[0], ImproperAxes[i]->direction[1], ImproperAxes[i]->direction[2] ) ;
         printf( "(%14.8f,%14.8f,%14.8f)\n", 
@@ -1638,7 +1650,8 @@ if( symmetry_code == NULL ){
     }
 if( PlanesCount + NormalAxesCount + ImproperAxesCount + InversionCentersCount == 0 ) {
     printf( "Molecule has no symmetry elements\n" ) ;
-} else {
+    } 
+else {
     printf( "Molecule has the following symmetry elements: " ) ;
     if( InversionCentersCount > 0 ) strcat( symmetry_code, "(i) " ) ;
     if( NormalAxesCounts[0] == 1 )
